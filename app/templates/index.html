@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDo app</title>
+</head>
+<body>
+	<h1>ToDo List</h1>
+	<div>
+		<form method="POST" action="/add">
+			<input type="textbox" name="todoitem"> 
+			<input type="submit" value="Add item">
+		</form>
+	</div>
+
+	<div>
+		<form method="POST" action="/update">
+		<ul>
+			{% for item in list %}
+				
+				<li><input type="checkbox" name="{{item.id}}" value="{{item.text}}"
+					{% if item.complete %}
+					checked
+					{% endif %}>{{item.text}}</li>
+				
+			{% endfor %}
+		</ul>
+		<input type="submit" name="Submit" value="Update items">
+		</form>
+	</div>
+</body>
+</html>
